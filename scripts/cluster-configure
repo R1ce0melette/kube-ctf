@@ -14,7 +14,6 @@ SERVICE_ACCOUNT_CHALLENGE_MANAGER="gke-challenge-manager"
 
 gcloud iam service-accounts create "$SERVICE_ACCOUNT_CHALLENGE_MANAGER"
 
-gcloud iam service-accounts add-iam-policy-binding \
+gcloud iam service-accounts add-iam-policy-binding "$SERVICE_ACCOUNT_CHALLENGE_MANAGER@$PROJECT_ID.iam.gserviceaccount.com" \
     --role roles/iam.workloadIdentityUser \
-    --member "serviceAccount:$PROJECT_ID.svc.id.goog[$KUBECTF_NAMESPACE-management/challenge-manager]" \
-    "$SERVICE_ACCOUNT_CHALLENGE_MANAGER@$PROJECT_ID.iam.gserviceaccount.com"
+    --member "serviceAccount:$PROJECT_ID.svc.id.goog[$KUBECTF_NAMESPACE-management/challenge-manager]"  
